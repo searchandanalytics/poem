@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>मेरी कविता</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Hindi-friendly premium font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Noto Serif Devanagari', serif;
+
+            /* 🍁 Autumnal Elegance Background */
+            background: linear-gradient(
+                135deg,
+                #2b1b14,
+                #5c3a21,
+                #a97142,
+                #6f4e37
+            );
+            background-size: 300% 300%;
+            animation: autumnFlow 14s ease infinite;
+
+            color: #fff;
+        }
+
+        @keyframes autumnFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .card {
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            background: rgba(255, 255, 255, 0.10);
+            border-radius: 22px;
+            padding: 50px 40px;
+            max-width: 760px;
+            width: 90%;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.6);
+            text-align: center;
+            animation: fadeIn 1.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 46px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: #f5e6d3;
+        }
+
+        .divider {
+            width: 90px;
+            height: 2px;
+            background: linear-gradient(
+                to right,
+                transparent,
+                #f5c27a,
+                transparent
+            );
+            margin: 22px auto;
+        }
+
+        .tagline {
+            font-size: 16px;
+            opacity: 0.85;
+            margin-bottom: 35px;
+            font-style: italic;
+            color: #f0d9b5;
+        }
+
+        .poem {
+            font-size: 22px;
+            line-height: 1.9;
+            white-space: pre-line;
+            color: #fff6ea;
+        }
+
+        footer {
+            margin-top: 35px;
+            font-size: 14px;
+            opacity: 0.65;
+            color: #e8cfae;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 34px;
+            }
+            .poem {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h1>मेरी कविता</h1>
+        <div class="divider"></div>
+        <div class="tagline">जहाँ एहसास शब्द बनते हैं</div>
+
+        <div class="poem">
+पतझड़ भी कुछ सिखा जाता है,  
+जो गिरता है, वही निखरता है।  
+
+हर पत्ता कहानी कहता है,  
+हर अंत एक शुरुआत बनता है।  
+
+ये मौसम नहीं,  
+ज़िंदगी का सच है —  
+जो ठहर जाए,  
+वही कविता बनता है।
+        </div>
+
+        <footer>
+            © 2026 • Shakti Geet By Alok Srivastava
+        </footer>
+    </div>
+
+</body>
+</html>
