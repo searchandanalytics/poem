@@ -2,59 +2,299 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <title>मेरी कविता</title>
+    <title>शक्ति गीत — आलोक श्रीवास्तव | कविताएं, ग़ज़लें, गीत, कहानियां</title>
+    <meta name="description" content="आलोक श्रीवास्तव — प्रकृति प्रेम और मानवीय संवेदनाओं के कवि। कविताएं, ग़ज़लें, गीत और कहानियों का संग्रह।">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Hindi-friendly premium font -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600;700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --bg-deep: #1a0a04;
+            --bg-card: rgba(255, 200, 100, 0.06);
+            --gold: #f59e0b;
+            --gold-light: #fbbf24;
+            --gold-glow: rgba(245, 158, 11, 0.4);
+            --accent-poem: #ef4444;
+            --accent-ghazal: #f97316;
+            --accent-song: #eab308;
+            --accent-story: #dc2626;
+            --text-primary: #fff8f0;
+            --text-secondary: rgba(255, 248, 240, 0.7);
+            --font-hindi: 'Noto Serif Devanagari', serif;
+            --font-english: 'Outfit', sans-serif;
+        }
+
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            margin: 0;
-            height: 100vh;
+            font-family: var(--font-hindi);
+            background: linear-gradient(160deg, #1a0a04 0%, #2d1008 25%, #3d1510 50%, #2a0e06 75%, #1a0a04 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ══════════ Ambient Background ══════════ */
+        .bg-effects {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.3;
+            animation: orbDrift 18s ease-in-out infinite alternate;
+        }
+
+        .orb-1 {
+            width: 550px; height: 550px;
+            background: radial-gradient(circle, #ef4444, #b91c1c);
+            top: -10%; right: -8%;
+        }
+        .orb-2 {
+            width: 450px; height: 450px;
+            background: radial-gradient(circle, #f59e0b, #d97706);
+            bottom: -5%; left: -5%;
+            animation-delay: -6s;
+        }
+        .orb-3 {
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, #f97316, #ea580c);
+            top: 50%; left: 40%;
+            animation-delay: -12s;
+        }
+        .orb-4 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, #fbbf24, #f59e0b);
+            top: 20%; left: -5%;
+            animation-delay: -9s;
+            opacity: 0.25;
+        }
+
+        @keyframes orbDrift {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, -40px) scale(1.2); }
+        }
+
+        /* Subtle grid pattern */
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* ══════════ Navbar ══════════ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 18px 40px;
             display: flex;
-            justify-content: center;
             align-items: center;
-            font-family: 'Noto Serif Devanagari', serif;
-
-            /* 🍁 Autumnal Elegance Background */
-            background: linear-gradient(
-                135deg,
-                #2b1b14,
-                #5c3a21,
-                #a97142,
-                #6f4e37
-            );
-            background-size: 300% 300%;
-            animation: autumnFlow 14s ease infinite;
-
-            color: #fff;
+            justify-content: space-between;
+            backdrop-filter: blur(20px) saturate(1.5);
+            -webkit-backdrop-filter: blur(20px) saturate(1.5);
+            background: rgba(10, 10, 20, 0.7);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.4s ease;
         }
 
-        @keyframes autumnFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .navbar.scrolled {
+            padding: 12px 40px;
+            background: rgba(10, 10, 20, 0.9);
         }
 
-        .card {
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            background: rgba(255, 255, 255, 0.10);
-            border-radius: 22px;
-            padding: 50px 40px;
-            max-width: 760px;
-            width: 90%;
-            box-shadow: 0 25px 70px rgba(0,0,0,0.6);
-            text-align: center;
-            animation: fadeIn 1.8s ease;
+        .nav-brand {
+            font-family: var(--font-hindi);
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: 1px;
         }
 
-        @keyframes fadeIn {
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-hindi);
+            font-size: 15px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: rgba(255,255,255,0.06);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 20px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        /* Mobile menu button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--gold);
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* ══════════ Hero Section ══════════ */
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 40px 80px;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 70px;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* Poet Photo */
+        .poet-photo-wrapper {
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .poet-photo-frame {
+            width: 300px;
+            height: 380px;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.5),
+                0 0 40px var(--gold-glow);
+            animation: photoReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+        }
+
+        @keyframes photoReveal {
+            from {
+                opacity: 0;
+                transform: translateX(-40px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        .poet-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform 8s ease;
+        }
+
+        .poet-photo-frame:hover img {
+            transform: scale(1.08);
+        }
+
+        .poet-photo-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            border: 1px solid rgba(232, 184, 122, 0.2);
+            pointer-events: none;
+        }
+
+        /* Decorative border frame */
+        .photo-decor {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border: 1px solid rgba(232, 184, 122, 0.15);
+            border-radius: 28px;
+            animation: photoReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+        }
+
+        .photo-decor-2 {
+            position: absolute;
+            top: -16px;
+            left: -16px;
+            right: -16px;
+            bottom: -16px;
+            border: 1px solid rgba(232, 184, 122, 0.07);
+            border-radius: 32px;
+            animation: photoReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+        }
+
+        /* Poet Info */
+        .poet-info {
+            flex: 1;
+            animation: infoReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+        }
+
+        @keyframes infoReveal {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -65,53 +305,440 @@
             }
         }
 
-        h1 {
-            font-size: 46px;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            color: #f5e6d3;
+        .poet-label {
+            font-family: var(--font-english);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+            opacity: 0.8;
         }
 
-        .divider {
-            width: 90px;
-            height: 2px;
-            background: linear-gradient(
-                to right,
-                transparent,
-                #f5c27a,
-                transparent
-            );
-            margin: 22px auto;
+        .poet-name {
+            font-size: 56px;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #fff 0%, var(--gold-light) 50%, var(--gold) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: nameShimmer 6s ease-in-out infinite;
         }
 
-        .tagline {
-            font-size: 16px;
-            opacity: 0.85;
-            margin-bottom: 35px;
-            font-style: italic;
-            color: #f0d9b5;
+        @keyframes nameShimmer {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
         }
 
-        .poem {
-            font-size: 22px;
+        .poet-title {
+            font-size: 20px;
+            color: var(--gold);
+            opacity: 0.7;
+            margin-bottom: 28px;
+            font-weight: 500;
+        }
+
+        .poet-bio {
+            font-size: 17px;
             line-height: 1.9;
-            white-space: pre-line;
-            color: #fff6ea;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            max-width: 540px;
         }
 
-        footer {
-            margin-top: 35px;
+        .poet-detail {
+            font-size: 15px;
+            line-height: 1.8;
+            color: rgba(240, 230, 214, 0.45);
+            margin-bottom: 30px;
+            max-width: 540px;
+        }
+
+        .poet-contact {
+            font-family: var(--font-english);
             font-size: 14px;
-            opacity: 0.65;
-            color: #e8cfae;
+            color: rgba(240, 230, 214, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .poet-contact a {
+            color: var(--gold);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .poet-contact a:hover {
+            opacity: 1;
+        }
+
+        /* Scroll indicator */
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: scrollBounce 2s ease-in-out infinite, infoReveal 1.5s ease 2s both;
+        }
+
+        .scroll-hint span {
+            font-family: var(--font-english);
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        .scroll-arrow {
+            width: 20px;
+            height: 20px;
+            border-right: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+            transform: rotate(45deg);
+            opacity: 0.5;
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ══════════ Categories Section ══════════ */
+        .categories-section {
+            position: relative;
+            z-index: 1;
+            padding: 60px 40px 100px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            font-family: var(--font-english);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.7;
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            margin: 20px auto 0;
+        }
+
+        /* Category Cards */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        .category-card {
+            position: relative;
+            border-radius: 22px;
+            padding: 44px 36px;
+            text-decoration: none;
+            color: var(--text-primary);
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            min-height: 240px;
+
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 22px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255,255,255,0.12);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        }
+
+        .category-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Category-specific gradient overlays */
+        .card-poems::before {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(185, 28, 28, 0.05));
+        }
+        .card-poems:hover {
+            border-color: rgba(239, 68, 68, 0.5);
+            box-shadow: 0 30px 80px rgba(239, 68, 68, 0.2);
+        }
+
+        .card-ghazals::before {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(234, 88, 12, 0.05));
+        }
+        .card-ghazals:hover {
+            border-color: rgba(249, 115, 22, 0.5);
+            box-shadow: 0 30px 80px rgba(249, 115, 22, 0.2);
+        }
+
+        .card-songs::before {
+            background: linear-gradient(135deg, rgba(234, 179, 8, 0.12), rgba(202, 138, 4, 0.05));
+        }
+        .card-songs:hover {
+            border-color: rgba(234, 179, 8, 0.5);
+            box-shadow: 0 30px 80px rgba(234, 179, 8, 0.2);
+        }
+
+        .card-stories::before {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.12), rgba(185, 28, 28, 0.05));
+        }
+        .card-stories:hover {
+            border-color: rgba(220, 38, 38, 0.5);
+            box-shadow: 0 30px 80px rgba(220, 38, 38, 0.2);
+        }
+
+        .card-icon {
+            font-size: 42px;
+            margin-bottom: 18px;
+            display: block;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .category-card:hover .card-icon {
+            transform: scale(1.15) translateY(-4px);
+        }
+
+        .card-title {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .card-poems .card-title { color: var(--accent-poem); }
+        .card-ghazals .card-title { color: var(--accent-ghazal); }
+        .card-songs .card-title { color: var(--accent-song); }
+        .card-stories .card-title { color: var(--accent-story); }
+
+        .card-desc {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            flex: 1;
+        }
+
+        .card-arrow {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            font-family: var(--font-english);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.4s ease;
+        }
+
+        .card-poems .card-arrow { color: var(--accent-poem); }
+        .card-ghazals .card-arrow { color: var(--accent-ghazal); }
+        .card-songs .card-arrow { color: var(--accent-song); }
+        .card-stories .card-arrow { color: var(--accent-story); }
+
+        .category-card:hover .card-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .card-arrow svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover .card-arrow svg {
+            transform: translateX(4px);
+        }
+
+        /* ══════════ Floating verse ══════════ */
+        .floating-verse {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 80px 40px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .floating-verse .verse-text {
+            font-size: 24px;
+            line-height: 2;
+            color: rgba(245, 222, 179, 0.5);
+            font-style: italic;
+        }
+
+        .floating-verse .verse-line {
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.3;
+            margin: 20px auto;
+        }
+
+        /* ══════════ Footer ══════════ */
+        .footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-text {
+            font-family: var(--font-english);
+            font-size: 13px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(240, 230, 214, 0.3);
+        }
+
+        .footer-text .brand {
+            color: var(--gold);
+            font-weight: 500;
+            opacity: 0.6;
+        }
+
+        /* ══════════ Scroll animations ══════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ══════════ Responsive ══════════ */
+        @media (max-width: 900px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 45px;
+            }
+
+            .poet-name {
+                font-size: 42px;
+            }
+
+            .poet-bio, .poet-detail {
+                max-width: 100%;
+            }
+
+            .poet-contact {
+                justify-content: center;
+            }
+
+            .poet-photo-frame {
+                width: 240px;
+                height: 300px;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 600px) {
-            h1 {
-                font-size: 34px;
+            .navbar {
+                padding: 14px 20px;
             }
-            .poem {
-                font-size: 18px;
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: rgba(10, 10, 20, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 16px;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 100px 20px 60px;
+            }
+
+            .poet-name {
+                font-size: 36px;
+            }
+
+            .poet-photo-frame {
+                width: 200px;
+                height: 260px;
+            }
+
+            .categories-section {
+                padding: 40px 20px 80px;
+            }
+
+            .category-card {
+                padding: 32px 26px;
+                min-height: 200px;
+            }
+
+            .card-title {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 30px;
             }
         }
     </style>
@@ -119,28 +746,178 @@
 
 <body>
 
-    <div class="card">
-        <h1>मेरी कविता</h1>
-        <div class="divider"></div>
-        <div class="tagline">जहाँ एहसास शब्द बनते हैं</div>
+    <!-- Background effects -->
+    <div class="bg-effects">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
+    </div>
+    <div class="bg-grid"></div>
 
-        <div class="poem">
-पतझड़ भी कुछ सिखा जाता है,  
-जो गिरता है, वही निखरता है।  
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="nav-brand">शक्ति गीत</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="poems.html">कविताएं</a></li>
+            <li><a href="ghazals.html">ग़ज़लें</a></li>
+            <li><a href="songs.html">गीत</a></li>
+            <li><a href="stories.html">कहानियां</a></li>
+        </ul>
+    </nav>
 
-हर पत्ता कहानी कहता है,  
-हर अंत एक शुरुआत बनता है।  
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
 
-ये मौसम नहीं,  
-ज़िंदगी का सच है —  
-जो ठहर जाए,  
-वही कविता बनता है।
+            <!-- Poet Photo -->
+            <div class="poet-photo-wrapper">
+                <div class="photo-decor-2"></div>
+                <div class="photo-decor"></div>
+                <div class="poet-photo-frame">
+                    <img src="poet.png" alt="आलोक श्रीवास्तव — कवि और लेखक" id="poetPhoto">
+                </div>
+            </div>
+
+            <!-- Poet Introduction -->
+            <div class="poet-info">
+                <div class="poet-label">Poet & Writer</div>
+                <h1 class="poet-name">आलोक श्रीवास्तव</h1>
+                <div class="poet-title">कवि और लेखक</div>
+                <p class="poet-bio">
+                    प्रकृति प्रेम और मानवीय संवेदनाओं के कवि आलोक श्रीवास्तव की रचनाओं का संग्रह। प्रेम गीत, प्रकृति कविताएं, मानवीय संवेदनाओं और संबंधों पर कविताएं, ग़ज़लें, कहानियां और संस्मरण।
+                </p>
+                <p class="poet-detail">
+                    उत्तर प्रदेश के देवरिया जिले के एक छोटे से गांव में जन्मे आलोक श्रीवास्तव गणित विषय में परास्नातक हैं और वर्तमान में भारतीय स्टेट बैंक में सहायक महा प्रबंधक पद पर कार्यरत हैं।
+                </p>
+                <div class="poet-contact">
+                    <span>✉</span>
+                    <a href="mailto:aloksbipo99@gmail.com">aloksbipo99@gmail.com</a>
+                </div>
+            </div>
         </div>
 
-        <footer>
-            © 2026 • Shakti Geet By Alok Srivastava. All rights reserved.
-        </footer>
+        <div class="scroll-hint">
+            <span>रचनाएं देखें</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section" id="categories">
+        <div class="section-header reveal">
+            <div class="section-label">Collections</div>
+            <h2 class="section-title">रचनाएं</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="categories-grid">
+            <!-- Poems -->
+            <a href="poems.html" class="category-card card-poems reveal">
+                <span class="card-icon">📜</span>
+                <h3 class="card-title">कविताएं</h3>
+                <p class="card-desc">
+                    प्रकृति, प्रेम और जीवन के रंगों में रंगी कविताएं — जो मन को छू जाएं
+                </p>
+                <div class="card-arrow">
+                    <span>पढ़ें</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+            </a>
+
+            <!-- Ghazals -->
+            <a href="ghazals.html" class="category-card card-ghazals reveal">
+                <span class="card-icon">🌹</span>
+                <h3 class="card-title">ग़ज़लें</h3>
+                <p class="card-desc">
+                    शेर-ओ-शायरी की दुनिया — जहाँ हर शेर एक कहानी कहता है
+                </p>
+                <div class="card-arrow">
+                    <span>पढ़ें</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+            </a>
+
+            <!-- Songs -->
+            <a href="songs.html" class="category-card card-songs reveal">
+                <span class="card-icon">🎵</span>
+                <h3 class="card-title">गीत</h3>
+                <p class="card-desc">
+                    मधुर गीतों की धुन — जो दिल में बस जाएं और होठों पर आ जाएं
+                </p>
+                <div class="card-arrow">
+                    <span>पढ़ें</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+            </a>
+
+            <!-- Stories -->
+            <a href="stories.html" class="category-card card-stories reveal">
+                <span class="card-icon">📖</span>
+                <h3 class="card-title">कहानियां</h3>
+                <p class="card-desc">
+                    जीवन के अनुभवों से जन्मी कहानियां और संस्मरण — जो सोचने पर मजबूर करें
+                </p>
+                <div class="card-arrow">
+                    <span>पढ़ें</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Floating verse -->
+    <div class="floating-verse reveal">
+        <div class="verse-line"></div>
+        <p class="verse-text">
+            जो ठहर जाए,<br>
+            वही कविता बनता है।
+        </p>
+        <div class="verse-line"></div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">© 2026 • <span class="brand">Shakti Geet</span> by Alok Srivastava. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Scroll reveal animations
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, i * 120);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        reveals.forEach(el => observer.observe(el));
+
+        // Smooth scroll for scroll hint
+        document.querySelector('.scroll-hint')?.addEventListener('click', () => {
+            document.getElementById('categories').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
 
 </body>
 </html>

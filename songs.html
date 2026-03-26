@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>गीत — शक्ति गीत | आलोक श्रीवास्तव</title>
+    <meta name="description" content="आलोक श्रीवास्तव के गीत — मधुर गीतों की धुन जो दिल में बस जाएं।">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600;700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #1a0a04;
+            --gold: #f59e0b;
+            --gold-light: #fbbf24;
+            --accent: #eab308;
+            --accent-glow: rgba(234, 179, 8, 0.2);
+            --text-primary: #fff8f0;
+            --text-secondary: rgba(255, 248, 240, 0.7);
+            --font-hindi: 'Noto Serif Devanagari', serif;
+            --font-english: 'Outfit', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-hindi);
+            background: linear-gradient(160deg, #1a0a04 0%, #2d1008 25%, #3d1510 50%, #2a0e06 75%, #1a0a04 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-effects { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+        .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.3; animation: orbDrift 18s ease-in-out infinite alternate; }
+        .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #eab308, #ca8a04); top: -10%; right: -8%; }
+        .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, #f97316, #ea580c); bottom: -5%; left: -5%; animation-delay: -6s; }
+        @keyframes orbDrift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(50px,-40px) scale(1.2); } }
+
+        .bg-grid {
+            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .navbar {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            padding: 18px 40px;
+            display: flex; align-items: center; justify-content: space-between;
+            backdrop-filter: blur(20px) saturate(1.5);
+            -webkit-backdrop-filter: blur(20px) saturate(1.5);
+            background: rgba(10, 10, 20, 0.7);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .nav-brand {
+            font-size: 24px; font-weight: 700;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 8px; list-style: none; }
+        .nav-links a {
+            font-size: 15px; color: var(--text-secondary); text-decoration: none;
+            padding: 8px 18px; border-radius: 10px; transition: all 0.3s ease;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-primary); background: rgba(255,255,255,0.06); }
+        .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+        .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--gold); margin: 5px 0; border-radius: 2px; }
+
+        .page-header {
+            position: relative; z-index: 1;
+            padding: 140px 40px 60px; text-align: center;
+            animation: fadeUp 1s ease both;
+        }
+        .page-icon { font-size: 48px; margin-bottom: 16px; display: block; }
+        .page-title { font-size: 52px; font-weight: 900; margin-bottom: 10px; color: var(--accent); }
+        .page-subtitle { font-size: 18px; color: var(--text-secondary); font-style: italic; }
+        .page-divider { width: 60px; height: 2px; margin: 24px auto 0; background: linear-gradient(to right, transparent, var(--accent), transparent); }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        .content {
+            position: relative; z-index: 1;
+            max-width: 780px; margin: 0 auto;
+            padding: 40px 40px 100px;
+        }
+
+        .coming-soon {
+            text-align: center; padding: 80px 40px;
+            opacity: 0; animation: cardReveal 0.8s ease 0.3s forwards;
+        }
+        .coming-soon .cs-icon { font-size: 64px; margin-bottom: 24px; display: block; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes cardReveal { to { opacity: 1; transform: translateY(0); } }
+        .coming-soon h2 { font-size: 28px; color: var(--text-primary); margin-bottom: 14px; }
+        .coming-soon p { font-size: 17px; color: var(--text-secondary); max-width: 400px; margin: 0 auto 30px; line-height: 1.8; }
+
+        .btn-home {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: var(--font-hindi); font-size: 15px;
+            color: var(--bg-deep);
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            padding: 14px 32px; border-radius: 14px;
+            text-decoration: none; font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(232, 184, 122, 0.25);
+        }
+        .btn-home:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(232, 184, 122, 0.35); }
+
+        .footer {
+            position: relative; z-index: 1;
+            text-align: center; padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .footer-text {
+            font-family: var(--font-english); font-size: 13px; font-weight: 300;
+            letter-spacing: 2px; text-transform: uppercase; color: rgba(240,230,214,0.3);
+        }
+        .footer-text .brand { color: var(--gold); font-weight: 500; opacity: 0.6; }
+
+        @media (max-width: 600px) {
+            .navbar { padding: 14px 20px; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: rgba(10,10,20,0.95); backdrop-filter: blur(20px); padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+            .nav-links.open { display: flex; }
+            .menu-toggle { display: block; }
+            .page-header { padding: 110px 20px 40px; }
+            .page-title { font-size: 38px; }
+            .content { padding: 30px 20px 80px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-effects">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+    <div class="bg-grid"></div>
+
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">शक्ति गीत</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="poems.html">कविताएं</a></li>
+            <li><a href="ghazals.html">ग़ज़लें</a></li>
+            <li><a href="songs.html" class="active">गीत</a></li>
+            <li><a href="stories.html">कहानियां</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <span class="page-icon">🎵</span>
+        <h1 class="page-title">गीत</h1>
+        <p class="page-subtitle">मधुर गीतों की धुन — जो दिल में बस जाएं और होठों पर आ जाएं</p>
+        <div class="page-divider"></div>
+    </header>
+
+    <main class="content">
+        <div class="coming-soon">
+            <span class="cs-icon">🎶</span>
+            <h2>गीत जल्द आ रहे हैं</h2>
+            <p>कवि के मधुर गीत यहाँ प्रकाशित होंगे। बने रहें।</p>
+            <a href="index.html" class="btn-home">← मुख्य पृष्ठ</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">© 2026 • <span class="brand">Shakti Geet</span> by Alok Srivastava</p>
+    </footer>
+
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+    </script>
+
+</body>
+</html>
